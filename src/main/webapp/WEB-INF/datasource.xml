@@ -7,15 +7,15 @@
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="${db.mysql.url}" />
-        <property name="username" value="${db.mysql.username}" />
-        <property name="password" value="${db.mysql.password}" />
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="$[db.mysql.url]" />
+        <property name="username" value="$[db.mysql.username]" />
+        <property name="password" value="$[db.mysql.password]" />
 
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="5" />
         <property name="minIdle" value="10" />
         <property name="maxActive" value="20" />
+        <property name="maxIdle" value="15"/>
 
         <!-- 配置获取连接等待超时的时间 -->
         <property name="maxWait" value="60000" />
@@ -44,6 +44,7 @@
 
         <!-- 配置监控统计拦截的filters, 监控统计："stat",防SQL注入："wall",组合使用： "stat,wall" -->
         <property name="filters" value="stat,wall" />
+
     </bean>
 
 </beans>
